@@ -7,10 +7,10 @@ import taskRouter from "./src/routers/taskRouter.js";
 
 const app = express();
 app.use(express.json());
-app.use(taskRouter);
 app.use(cors());
 // app.use(bp.json())
 // app.use(bp.urlencoded())
+app.use(taskRouter);
 
 
 app.listen(process.env.PORT,()=>{
