@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { Task } from "../models/taskModel.js";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 export async function saveTask(req,res){
     try {
@@ -41,7 +41,7 @@ export async function fetchCompletedTasks(req,res){
     }
 }
 
-export async function fetchPandingTask(req,res){
+export async function fetchPendingTask(req,res){
     try {
        const pandingTasks = await Task.find({isCompleted:false});
        if(pandingTasks){
