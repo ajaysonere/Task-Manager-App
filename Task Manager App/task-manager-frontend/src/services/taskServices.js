@@ -16,3 +16,15 @@ export function completeTask(id){
 export function removeTask(id){
     return axios.delete(`${TaskUrlPrefix}/${id}`);
 }
+
+export function countDocument(){
+    return axios.get(`${TaskUrlPrefix}/all/document/count`);
+}
+
+export function countCompletedTask(){
+    return axios.get(`${TaskUrlPrefix}/all/document/completed`);
+}
+
+export function countPendingTask(){
+    return axios.get(`${TaskUrlPrefix}/all/document/pending`);
+}

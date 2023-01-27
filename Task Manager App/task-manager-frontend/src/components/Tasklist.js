@@ -3,6 +3,7 @@ import { Alert, Button, Card, Col, Container, Dropdown, Row } from "react-bootst
 import { completeTask, getTasks, removeTask } from "../services/taskServices";
 
 export function Tasklist(){
+
    const [tasks,setTasks] = useState([]);
    const handleTasks = async(url)=>{
       const responce = await getTasks(url);
@@ -11,6 +12,7 @@ export function Tasklist(){
    useEffect(()=>{
        handleTasks("all");
    } , []);
+
     return (
       <>
         <Container className="mt-5 text-center">
@@ -49,14 +51,13 @@ export function Tasklist(){
                                         </Card.Text>
                                         {
                                             !item.isCompleted ? <Button variant="primary" onClick={ async()=>{
-                                                console.log("Button has clicked ");
                                                 await completeTask(item._id);
-                                                // await getTasks('all');
+                                                await getTasks('all');
                                             }} className="btn-sm">Complete </Button> : null
                                         }
                                         <Button variant="danger" className="btn-sm ms-3" onClick={async()=>{
                                             await removeTask(item._id);
-                                            // await getTasks('all');
+                                            await getTasks('all');
                                         }}>Remove</Button>
                                     </Card.Body>
                                 </Card>

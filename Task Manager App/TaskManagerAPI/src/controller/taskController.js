@@ -97,3 +97,30 @@ export async function markTaskAsCompleted(req,res){
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message:'Error while marking the task as completed '});
     }
 }
+
+export async function countDocument(req, res) {
+    try {
+        const count = await Task.countDocuments({});
+        res.status(StatusCodes.OK).json(count);
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: "Error while counting the document " });
+    }
+}
+
+export async function countCompletedTask(req,res){
+    try {
+        const completedTasks  = await  Task.countDocuments({isCompleted:true})
+        res.status(StatusCodes.OK).json(completedTasks);
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message:'Error while counting the completing tasks '});
+    }
+}
+
+export async function countPendingTask(req, res) {
+    try {
+       const pendingTasks=  await Task.countDocuments({ isCompleted: false })
+       res.status(StatusCodes.OK).json(pendingTasks);
+    } catch (error) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Error while counting the Pending tasks ' });
+    }
+}
